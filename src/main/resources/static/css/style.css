@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Expletus+Sans:wght@600&display=swap');
+
+#wrapper{
+    max-width: 2100px;
+    margin: 0 auto;
+}
+
+.content {
+    font-family: 'Expletus Sans', cursive;
+    text-align: center;
+}
+
+.content h2 {
+    color: blue;
+}
+
+#main-content {
+    text-align: center;
+}
+
+.navi-link a {
+    text-decoration: none;
+    color: white;
+    padding: 0 20px;
+}
+
+.content h1 {
+    text-align: center;
+    padding-top: 10%;
+    font-family: 'Expletus Sans', cursive;
+}
+
+button {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    font-family: 'Expletus Sans', cursive;
+    color: white;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+#hidden-form{
+    margin-left: 15%;
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.main {
+    display: block;
+    margin-top: 30px;
+    text-align: center;
+    font-family: 'Expletus Sans', cursive;
+
+}
+
+.newForm {
+    width: 100%;
+    display: flex;
+    margin: 20px auto;
+    position: center;
+}
+
+.newForm p {
+    padding-top: 10px;
+    width: fit-content;
+}
+
+.list-deadline {
+    display: block;
+    margin: 0 10%;
+}
+
+.edit-form {
+    margin: 50px auto;
+    display: flex;
+    margin-left: 15%;
+}
+
+.edit-form p {
+    padding-top: 10px;
+    width: fit-content;
+}
+
+.list-deadline button:hover {
+    background-color: limegreen;
+    border-radius: 5%;
+}
+
+.list-deadline a {
+    text-decoration: none;
+    color: cornflowerblue;
+}
+
+.list-deadline a:hover {
+    color: #f9f9f9;
+}

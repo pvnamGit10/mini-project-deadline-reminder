@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="header.html">
+    <title>Deadline In Process</title>
+</head>
+<body>
+<div id="wrapper">
+    <div th:insert="navigationBar.html">
+    </div>
+    <div class="content">
+        <h1>List Deadline In Process</h1>
+        <div class="list-deadline">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="process , state : ${listInProcess}">
+                    <td th:text="${state.count}">No</td>
+                    <td th:text="${process.title}">Title</td>
+                    <td style="max-width: 250px;max-height: 100px" th:text="${process.des}">Description</td>
+                    <td th:text="${process.beginOn}">Start Date</td>
+                    <td th:text="${process.endOn}">End Date</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

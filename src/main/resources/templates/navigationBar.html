@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="header.html">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a aria-current="page" class="navbar-brand" th:href="todoList">DEADLINE REMINDER</a>
+        <button aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                data-bs-target="#navbarTogglerDemo02" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="navi-link">
+                    <a th:href="done-result">DONE</a>
+                </li>
+                <li class="navi-link">
+                    <a th:href="in-process">IN PROCESS</a>
+                </li>
+                <li class="navi-link">
+                    <a th:href="in-ready">IN READY</a>
+                </li>
+                <li class="navi-link">
+                    <button class="dropbtn" onclick="myDropDownFunction()">YOUR ACCOUNT
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content" id="myDropdown">
+                        <a href="#" th:href="profile">Your Profile</a>
+                        <a href="#" th:href="logOut">Log Out</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="d-flex" th:action="@{/search-result}" method="get">
+                <input aria-label="Search" class="form-control me-2" placeholder="Search" type="search" name="searchValue">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+</body>
+</html>

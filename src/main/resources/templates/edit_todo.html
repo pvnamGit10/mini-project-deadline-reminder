@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="header.html">
+    <title>Edit Deadline</title>
+
+</head>
+<body>
+<div th:insert="navigationBar.html"></div>
+
+<div>
+    <div class="content">
+        <h1>Edit Todo List</h1>
+        <div class="edit-form">
+            <form action="#" method="post" th:action="@{/editTodo}" th:object="${todoForm}" onchange="success()">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <input class="form-control" id="todoTitle"
+                               placeholder="Title" th:field="*{title}" th:value="${todoForm.title}"
+                               type="text">
+                    </div>
+                    <div class="col-auto">
+                    <input class="form-control" placeholder="Description"
+                           id="todoDes" th:field="*{des}" th:value="${todoForm.des}" type="text">
+                    </div>
+                    <p>Begin Time :</p>
+                    <div class="col-auto">
+                        <input class="form-control" placeholder="Begin Time" th:value="${todoForm.beginOn}" th:field="*{beginOn}"
+                               id="todoBeginDate"
+                               type="date">
+                    </div>
+                    <p>End Time :</p>
+                    <div class="col-auto">
+                        <input class="form-control" placeholder="End Time" th:value="${todoForm.endOn}" th:field="*{endOn}"
+                               id="todoEndDate"
+                               type="date">
+                    </div>
+                    <div class="col-auto">
+                        <input id="add_btn" type="submit" value="Edit" disabled>
+                    </div>
+                    <div class="col-auto">
+                        <a href="todoList">
+                            <input type="button" value="Return">
+                        </a>
+                    </div>
+                    <br>
+                    <input type="hidden" th:value="${todoForm.id}" th:field="*{id}">
+                </div>
+                <p style="color: red; font-style: italic;font-family: 'Times New Roman'" id="showError"></p>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

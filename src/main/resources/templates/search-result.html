@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="header.html">
+
+    <title>SEARCH RESULT</title>
+</head>
+<body>
+<div id="wrapper">
+    <div th:insert="navigationBar.html">
+    </div>
+    <div class="content">
+        <h1>Search Result</h1>
+        <div class="list-deadline">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Status</th>
+                    <th>Complete</th>
+                    <th>Delete</th>
+                    <th>Update</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="result , state : ${searchResult}">
+                        <td th:text="${state.count}">No</td>
+                        <td th:text="${result.title}">Title</td>
+                        <td style="max-width: 250px;max-height: 100px" th:text="${result.des}">Description</td>
+                        <td th:text="${result.beginOn}">Start Date</td>
+                        <td th:text="${result.endOn}">End Date</td>
+                        <td>
+                            <div th:if="${result.getIsDone()}">
+                                DONE
+                            </div>
+                            <div th:if="not ${result.getIsDone()} and ${result.getInProcess()}">
+                                IN PROCESS
+                            </div>
+                            <div th:if="not ${result.getIsDone()} and not ${result.getInProcess()}">
+                                IN READY
+                            </div>
+                        </td>
+                        <td>
+                            <button type="submit">
+                                <a th:href="@{'/done/'+${result.getId()}}">
+                                    <i class="bi bi-bookmark-check">Complete
+                                        <svg class="bi bi-bookmark-check" fill="currentColor" height="16" viewBox="0 0 16 16"
+                                             width="16" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"
+                                                  fill-rule="evenodd"/>
+                                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                                        </svg>
+                                    </i></a>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="submit">
+                                <a th:href="@{'/delete/'+${result.getId()}}">Delete</a>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="submit">
+                                <a th:href="${result.getId()}">Update</a>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

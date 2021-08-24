@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="header.html">
+    <title>Registration Account</title>
+</head>
+<body>
+<div class="main">
+    <h2>Registration Page</h2>
+    <form action="#" method="post" th:action="@{/registration}" th:object="${registrationForm}" >
+        First Name : <input th:field="*{firstName}" type="text"><br>
+        <div th:if="${#fields.hasErrors('firstName')}">
+            <span style="color: red;font-family: 'Times New Roman';font-style: italic" th:errors="*{firstName}"></span>
+        </div>
+        <br>
+        Last Name : <input th:field="*{lastName}" type="text"><br>
+        <div th:if="${#fields.hasErrors('lastName')}">
+            <span style="color: red;font-family: 'Times New Roman';font-style: italic" th:errors="*{lastName}"></span>
+        </div>
+        <br>
+        Email : <input th:field="*{email}" type="text"><br>
+        <div th:if="${#fields.hasErrors('email')}">
+            <span style="color: red;font-family: 'Times New Roman';font-style: italic" th:errors="*{email}"></span>
+        </div>
+        <br>
+        Password : <input th:field="*{password}" id="pwd" type="password"><br>
+        <div th:if="${#fields.hasErrors('password')}">
+            <span style="color: red;font-family: 'Times New Roman';font-style: italic" th:errors="*{password}"></span>
+        </div>
+        <br>
+        Confirm password : <input type="password" id="confirm-pwd" onkeyup="successConfirm()">
+        <p style="padding-left: 30px;font-family: 'Times New Roman';font-style: italic;color: red" id="error-cf-pwd"></p>
+        <br>
+        <input type="submit" value="Registration" id="rgs-btn" disabled><br>
+        <a href="/" >
+            <input type="button" value="Back to Home Page">
+        </a>
+
+    </form>
+</div>
+</body>
+</html>
