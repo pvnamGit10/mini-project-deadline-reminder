@@ -70,7 +70,7 @@ public class UserService {
 
         }
         String passwordFromDB = userRepository.findByEmailAndEnabled(request.getEmail()).get().getPassword();
-
+        //password in DB was encoded, so to check if password client type to password box is match or not, use BCryptPasswordEncoder.
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         if(encoder.matches(request.getPassword(), passwordFromDB)){
             return true;
@@ -81,7 +81,7 @@ public class UserService {
 
     }
 
-
+    // return true if confirm time is not over 15 minutes from create time
     public boolean confirmToken(String stringOfToken) {
         tokenService.updateConfirmAt(stringOfToken);
         Token token = tokenRepository.findByToken(stringOfToken).orElseThrow(
