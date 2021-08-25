@@ -34,6 +34,7 @@ public class TodoService {
         return todoRepository.getListTodo(current_user);
     }
 
+    //check status of deadline day by day
     @Transactional
     public void todoCheckStatus(Todo todo){
         if(todoRepository.isDone(todo.getId()).isPresent()){
@@ -48,6 +49,7 @@ public class TodoService {
     private final HttpServletRequest request;
 
 
+    //Add deadline to database
     @Transactional
     public void createTodo(Todo todo){
         HttpSession session = request.getSession();
@@ -56,15 +58,18 @@ public class TodoService {
         todoCheckStatus(todo);
     }
 
+    //Get deadline description through ID
     public Todo getTodo(Long id){
         return todoRepository.getById(id);
     }
 
+    //Delete deadline through ID
     public void deleteTodo(Long id) {
         Todo todo = todoRepository.getById(id);
         todoRepository.delete(todo);
     }
 
+    //Update deadline through ID
     @Transactional
     public boolean updateTodo(Todo todo){
         todoRepository.updateTodo(todo.getTitle(),todo.getDes(),todo.getBeginOn(),todo.getEndOn(),todo.getId());
@@ -72,6 +77,7 @@ public class TodoService {
         return true;
     }
 
+    //When client check complete, this function will be called to make isDone=true in DB
     @Transactional
     public void makeComplete(Long id){
         todoRepository.makeComplete(id);
@@ -101,6 +107,8 @@ public class TodoService {
         return todoRepository.getListSearch(searchValue,current_user);
     }
 
+    
+    //send email to user, remind their time left for deadline
     public void sendEmail(Todo todo) throws MessagingException {
         int reminderDate = todo.getEndOn().compareTo(LocalDate.now());
         String emailUser = todo.getUserAccount().getEmail();
