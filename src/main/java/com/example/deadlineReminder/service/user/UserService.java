@@ -30,17 +30,17 @@ public class UserService {
 
     public void signUp(UserAccount account) throws MessagingException {
         boolean userExists = userRepository.findByEmailAndEnabled(account.getEmail()).isPresent();
-        if(userExists)
+        if(userExists) // if email is already enabled, throw 500 error page 
         {
             throw new IllegalStateException("Email already existed");
         }
-        if(userRepository.findByEmailAndDisabled(account.getEmail()).isPresent()){
+        if(userRepository.findByEmailAndDisabled(account.getEmail()).isPresent()){ // if email is disabled, delete this user in database, reassign a user 
             UserAccount userAccount = userRepository.findByEmail(account.getEmail()).get();
             tokenRepository.deleteByUserAccount(userAccount);
             userRepository.delete(userAccount);
         }
         account.setPassword(passwordEncoder.encoder().encode(account.getPassword()));
-        userRepository.save(account);
+        userRepository.save(account); // save user to DB
 
         //TODO: send token
         String stringOfToken = UUID.randomUUID().toString();
@@ -51,8 +51,8 @@ public class UserService {
             account
         );
         tokenService.saveToken(token);
-        System.out.println(stringOfToken);
-
+        System.out.println(stringOfToken); 
+        //send email with token was created in databse match with user account.
         emailService.sendEmail(account.getEmail(),stringOfToken);
     }
 
