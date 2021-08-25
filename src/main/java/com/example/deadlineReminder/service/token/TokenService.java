@@ -21,11 +21,13 @@ public class TokenService {
         tokenRepository.save(token);
     }
 
+    //Update confirm time to enable user
     @Transactional
     public void updateConfirmAt(String token){
         tokenRepository.updateConfirmAt(LocalDateTime.now(),token);
     }
 
+    //Get useraccount by token
     public UserAccount getTokenConfirmation(String token){
         return tokenRepository.findByToken(token).get().getUserAccount();
     }
