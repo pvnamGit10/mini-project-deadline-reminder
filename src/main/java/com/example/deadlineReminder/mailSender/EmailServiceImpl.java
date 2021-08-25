@@ -39,7 +39,7 @@ public class EmailServiceImpl {
                 "\t<p>Dear "+firstName+" ,</p>\n" +
                 "\t<p>This is email for confirm your registration account. Please click the link below to confirm your registration.</p><br>\n" +
                 "\t<p>This link just have effective in 15 minutes since you register your account</p><br>\n" +
-                "\t<a href=\"localhost:8080/confirm?token="+token+"\">CLICK HERE TO CONFIRM YOUR ACCOUNT</a>\n" +
+                "\t<a href=\"/confirm?token="+token+"\"><button>CLICK HERE</button></a>\n" +
                 "\t<br>\n" +
                 "\t<p>Thanks for using our product. Have a nice day!</p>\n" +
                 "</body>\n" +

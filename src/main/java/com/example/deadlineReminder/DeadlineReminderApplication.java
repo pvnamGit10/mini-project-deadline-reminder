@@ -19,10 +19,15 @@ public class DeadlineReminderApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DeadlineReminderApplication.class, args);
 	}
-//	@Scheduled(cron = "0 0 7 ")
-//	void someTest() throws MessagingException {
-//		schedulingComponent.checkStatus();
-//		schedulingComponent.sendEmailReminder();
-//	}
+	@Scheduled(cron = "0 0 0 * * ?")
+	void changeStatus() {
+		schedulingComponent.checkStatus();
+	}
+
+	@Scheduled(cron = "0 0 7 * * ?")
+
+	void sendEmailDaily() throws MessagingException{
+		schedulingComponent.sendEmailReminder();
+	}
 
 }
