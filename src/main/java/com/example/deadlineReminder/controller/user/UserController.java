@@ -28,6 +28,9 @@ public class UserController {
     private final UserService userService;
     private final TodoService todoService;
 
+    public HttpSession session(HttpServletRequest request){
+        return request.getSession(false);
+    }
 
     @RequestMapping("/")
     public String homePage(HttpServletRequest request){
@@ -98,7 +101,7 @@ public class UserController {
     }
 
     @RequestMapping("/todoList")
-    public String todoListPage(Model model){
+    public String todoListPage(Model model,HttpServletRequest request){
         List<Todo> listTodo = todoService.listTodo();
         model.addAttribute("listTodo",listTodo);
         model.addAttribute("newTodo",new Todo());
